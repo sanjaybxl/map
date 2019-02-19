@@ -28,7 +28,7 @@
     "core-js": "^2.5.3",
     "jsoneditor": "^5.29.0",
     "mapbox-gl": "^0.53.0",
-    "rxjs": "^6.1.0",
+    "rxjs": "6.1.0",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
