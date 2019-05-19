@@ -1,1 +1,123 @@
-<app-ol-map [mapData]="mapData" [mapStyle]="mapStyle" [mapConfig]="mapConfig"></app-ol-map>
+<div class="overview-body">
+  <div class="analytics-row-container">
+    <div class="analytics-display-container">
+      <div class="analytic-title">
+        <div class="title">
+          Forecasted Weather
+        </div>
+        <div class="outage-range">
+          <div class="range">
+            <div class="box" style="background-color: #d0fc61">
+            </div>
+            <div class="range-number">
+              0 to 5
+            </div>
+          </div>
+          <div class="range">
+            <div class="box" style="background-color: #80ad1d">
+            </div>
+            <div class="range-number">
+              5 to 20
+            </div>
+          </div>
+          <div class="range">
+            <div class="box" style="background-color: #ffc603">
+            </div>
+            <div class="range-number">
+              20 to 30
+            </div>
+          </div>
+          <div class="range">
+            <div class="box" style="background-color: #fe8b3a">
+            </div>
+            <div class="range-number">
+              30 to 40
+            </div>
+          </div>
+          <div class="range">
+            <div class="box" style="background-color: #f44337 ">
+            </div>
+            <div class="range-number">
+              40+
+            </div>
+          </div>
+          <!-- <div class="range">20 to 30</div>
+          <div class="range">30 to 40</div>
+          <div class="range">40+</div> -->
+        </div>
+      </div>
+      <div class="analytic-map">
+        <!-- Forecasted Weather -->
+        <map-display [mapData]="mapDataOutage" [mapStyle]="mapStyleOutage" [renderTo]="'mapOutage'"></map-display>
+        <div id="mapOutage" class="map"></div>
+      </div>
+    </div>
+    <div class="analytics-display-container">
+      <div class="analytic-title">
+        <div class="title">
+          Predicted Outages
+        </div>
+        <div class="outage-range">
+          <div class="range">
+            <div class="box" style="background-color: #d0fc61">
+            </div>
+            <div class="range-number">
+              0 to 5
+            </div>
+          </div>
+          <div class="range">
+            <div class="box" style="background-color: #80ad1d">
+            </div>
+            <div class="range-number">
+              5 to 20
+            </div>
+          </div>
+          <div class="range">
+            <div class="box" style="background-color: #ffc603">
+            </div>
+            <div class="range-number">
+              20 to 30
+            </div>
+          </div>
+          <div class="range">
+            <div class="box" style="background-color: #fe8b3a">
+            </div>
+            <div class="range-number">
+              30 to 40
+            </div>
+          </div>
+          <div class="range">
+            <div class="box" style="background-color: #f44337 ">
+            </div>
+            <div class="range-number">
+              40+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="analytic-map">
+        <!-- Predicted Outages -->
+        <map-display [mapData]="mapDataOutage" [mapStyle]="mapStyleOutage" [renderTo]="'mapOutage1'"></map-display>
+        <div id="mapOutage1" class="map"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="analytics-row-container">
+    <div class="analytics-display-container">
+      <div class="analytic-title">Forecasted Severe Weather</div>
+    </div>
+    <div class="analytics-display-container">
+      <div class="analytic-title">Predicted Outages by Service Center</div>
+    </div>
+  </div>
+
+  <div class="analytics-row-container">
+    <div class="analytics-display-container">
+      <div class="analytic-title">Precipitation by Service Center</div>
+    </div>
+    <div class="analytics-display-container">
+      <div class="analytic-title">Sustained Windspeed by Service Center</div>
+    </div>
+  </div>
+</div>

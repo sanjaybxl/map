@@ -1,0 +1,50 @@
+{
+    "analyticResult": "device-outage-heatmap",
+    "timestamp": "2019-05-14T17:52:03.914Z",
+    "regions": [
+        "north-fl",
+        "south-fl",
+        "west-fl",
+        "east-fl"
+    ],
+    "analytic-runtime": {
+        "id": "runtimeid00001234",
+        "start": "2019-05-14T17:52:03.914Z",
+        "end": "2019-05-14T17:52:03.914Z",
+        "status": "SUCCESSFUL"
+    },
+    "townships": [
+        {
+            "geoId": "0500000US12015",
+            "devicesOut": 2,
+            "devicesOutPercent": 0.2,
+            "devicesTotal": 10,
+            "status": "SUCCESS",
+            "statusMessage": "All processed"
+        },
+        {
+            "geoId": "0500000US12019",
+            "devicesOut": 5,
+            "devicesOutPercent": 0.125,
+            "devicesTotal": 40,
+            "status": "SUCCESS",
+            "statusMessage": "All processed"
+        },
+        {
+            "geoId": "0500000US12021",
+            "devicesOut": 29,
+            "devicesOutPercent": 0.725,
+            "devicesTotal": 40,
+            "status": "SUCCESS",
+            "statusMessage": "Partial result, processed 30 out 40 devices"
+        },
+        {
+            "geoId": "0500000US12081",
+            "devicesOut": 49,
+            "devicesOutPercent": 0.725,
+            "devicesTotal": 50,
+            "status": "SUCCESS",
+            "statusMessage": "Partial result, processed 30 out 40 devices"
+        }
+    ]
+}

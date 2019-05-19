@@ -1,56 +1,79 @@
 import { Component, OnInit } from '@angular/core';
-import { DATA } from '../assets/data/geojson';
-import { Fill, Stroke, Style, Text } from 'ol/style';
+import { Fill, Stroke, Style } from 'ol/style';
+import { HttpClient } from '@angular/common/http';
+import { forkJoin } from 'rxjs';
+import { every } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  mapStyle: (feature: any) => any;
-  constructor() { }
-  mapData = DATA;
-  mapConfig: any
+
+  mapStyleOutage: any;
+  mapDataOutage: any;
+  inRange: any;
+  geoJsonUrl = 'assets/data/countries.json';
+  outageDataUrl = 'assets/data/outage.json';
+
+  constructor(private http: HttpClient) { }
+
   ngOnInit() {
-    this.mapConfig = {
-      'layers': [{
-        'type': 'cartodb',
-        'options': {
-          'cartocss_version': '2.1.1',
-          'cartocss': `#layer { 
-            [status = 'EXA']{ polygon-fill: #F00; opacity: 0.6 } 
-            [status = 'CON']{ polygon-fill: #fa605d; opacity: 0.6 }
-            [status = 'EXT']{ polygon-fill: #fada5e; opacity: 0.6 }
-            [status = 'EXB']{ polygon-fill: grey; opacity: 0.6 }
-            [status = 'NEW']{ polygon-fill: lightblue; opacity: 0.6 }
-          }`,
-          'sql': 'select * from public.current_ww'
+    let inRange = (x, min, max) => {
+      return ((x - min) * (x - max) <= 0);
+    }
+
+    this.mapStyleOutage = function (feature) {
+      // now you can use any property of your feature to identify the different colors
+      // I am using the COUNTY property of your data just to demonstrate
+      let color = 'transparent';
+
+      if (feature.get('devicesOut')) {
+        if (inRange(feature.get('devicesOut'), 0, 5)) {
+          color = '#d0fc61';
         }
-      }]
-    };
-
-    this.mapStyle = function (feature) {
-      //now you can use any property of your feature to identify the different colors
-      //I am using the COUNTY property of your data just to demonstrate
-      var color;
-      if (feature.get("COUNTY") < 10) {
-        color = "#fa605d";
-      } else if (feature.get("COUNTY") >= 20 && feature.get("COUNTY") <= 70) {
-        color = "grey";
-      } else {
-        color = "#fada5e";
+        if (inRange(feature.get('devicesOut'), 5, 20)) {
+          color = '#80ad1d';
+        }
+        if (inRange(feature.get('devicesOut'), 20, 30)) {
+          color = '#ffc603';
+        }
+        if (inRange(feature.get('devicesOut'), 30, 40)) {
+          color = '#fe8b3a';
+        }
+        if (feature.get('devicesOut') > 40) {
+          color = '#f44337';
+        }
       }
-
-      var retStyle = new Style({
-        stroke: new Stroke({
-          color: '#686868'
-        }),
+      const retStyle = new Style({
         fill: new Fill({
           color: color
         })
       });
       return retStyle;
     };
+
+    forkJoin(
+      this.getGeoJson(),
+      this.getOutageData()
+    ).subscribe(([geoJson, outageJson]: [any, any]) => {
+      outageJson.townships.map(outage => {
+        geoJson.features.filter(function (feature) {
+          return feature.properties.GEO_ID === outage.geoId
+        }).map(function (feature) {
+          feature.properties = Object.assign(feature.properties, outage);
+        });
+      });
+      this.mapDataOutage = geoJson;
+    });
+  }
+
+  getGeoJson() {
+    return this.http.get(this.geoJsonUrl);
+  }
+
+  getOutageData() {
+    return this.http.get(this.outageDataUrl);
   }
 }
