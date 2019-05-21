@@ -1,0 +1,33 @@
+<div class="map-display-container">
+  <div class="analytic-title">
+    <div class="title">
+      Predicted Outages
+    </div>
+    <div class="outage-range">
+      <div class="range" *ngFor="let po of poRange">
+        <div class="box" [style.background-color]='po.color'>
+        </div>
+        <div class="range-number" *ngIf="toggleOutage">
+          {{po.min}}{{ isNaN(po.max) ? '' : ' to '}}{{po.max || '+' }}
+        </div>
+        <div class="range-number" *ngIf="!toggleOutage">
+          {{po.minPer}} to {{po.maxPer}}%
+        </div>
+      </div>
+      <div class="map-actions">
+        <a (click)="settoggleOutage(false)">
+          <img src="../../assets/img/noun_map_marker.svg" />
+        </a>
+        <a (click)="settoggleOutage(true)">
+          <img src="../../assets/img/noun_power_outage.svg" />
+        </a>
+      </div>
+    </div>
+
+  </div>
+  <div class="analytic-map">
+    <!-- Predicted Outages -->
+    <map-display [mapData]="mapDataOutage" [mapStyle]="mapStyleOutage" [renderTo]="'mapOutage1'"></map-display>
+    <div id="mapOutage1" class="map"></div>
+  </div>
+</div>

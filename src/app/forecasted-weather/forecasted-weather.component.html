@@ -1,0 +1,49 @@
+<div class="map-display-container">
+  <div class="analytic-title">
+    <div class="title">
+      Forecasted Weather
+    </div>
+    <div class="outage-range">
+      <div class="range">
+        <div class="box" style="background-color: #d0fc61">
+        </div>
+        <div class="range-number">
+          0 to 5
+        </div>
+      </div>
+      <div class="range">
+        <div class="box" style="background-color: #80ad1d">
+        </div>
+        <div class="range-number">
+          5 to 20
+        </div>
+      </div>
+      <div class="range">
+        <div class="box" style="background-color: #ffc603">
+        </div>
+        <div class="range-number">
+          20 to 30
+        </div>
+      </div>
+      <div class="range">
+        <div class="box" style="background-color: #fe8b3a">
+        </div>
+        <div class="range-number">
+          30 to 40
+        </div>
+      </div>
+      <div class="range">
+        <div class="box" style="background-color: #f44337 ">
+        </div>
+        <div class="range-number">
+          40+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="analytic-map">
+    <!-- Forecasted Weather -->
+    <map-display [renderTo]="'mapOutage'"></map-display>
+    <div id="mapOutage" class="map"></div>
+  </div>
+</div>

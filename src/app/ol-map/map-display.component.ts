@@ -52,15 +52,20 @@ export class MapDisplayComponent implements OnInit, OnChanges {
         minZoom: 1,
       })
     });
+    this.map.setTarget(this.renderTo);
   }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['mapData']) {
       if (this.mapData) {
-        this.map.setTarget(this.renderTo);
         this.vectorLayer.getSource().addFeatures(this.format.readFeatures(this.mapData));
         this.map.getView().fit(this.vectorLayer.getSource().getExtent(), { size: this.map.getSize() });
       }
+      if(this.mapData === null) {
+       this.vectorLayer.getSource().clear();
+  
+      }
+      
     }
   }
 }
