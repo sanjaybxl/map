@@ -15,7 +15,6 @@ export class PredictedOutageComponent implements OnInit {
   mapDataOutage: any;
   inRange: any;
   poRange = predicteOutageRange;
-  predicteOutageRangePercentage = [[0, 20], [20, 40], [40, 60], [60, 80], [80, 100]];
   isNaN: Function = Number.isNaN;
   toggleOutage: boolean = true;
 
