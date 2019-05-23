@@ -1,13 +1,14 @@
 .analytic-title {
     display: flex;
-    line-height: 40px;
+    line-height: auto;
+    padding-bottom: 10px;
     .title {
-      width: 25%;
+      width: auto;
     }
     .outage-range {
       display: flex;
       justify-content: flex-end;
-      width: 75%;
+      width: 80%;
       .range {
         display: flex;
         align-items: center;
@@ -32,5 +33,12 @@
         height: inherit;
         width: inherit
       }
+    }
+  }
+  .map-actions {
+    display: flex;
+    justify-content: flex-end;
+    a {
+      margin-left: 5px;
     }
   }

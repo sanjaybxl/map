@@ -17,6 +17,8 @@ export class PredictedOutageComponent implements OnInit {
   poRange = predicteOutageRange;
   isNaN: Function = Number.isNaN;
   toggleOutage: boolean = true;
+  styleMapDeviceOut: (feature: any) => any;
+  styleMapDeviceOutPercent: (feature: any) => any;
 
   constructor(private preditedOutageService: PreditedOutageService) { }
 
@@ -25,9 +27,8 @@ export class PredictedOutageComponent implements OnInit {
       return ((x - min) * (x - max) <= 0);
     }
 
-    this.mapStyleOutage = function (feature) {
-      // now you can use any property of your feature to identify the different colors
-      // I am using the COUNTY property of your data just to demonstrate
+    this.styleMapDeviceOut = function (feature) {
+      // handle the device out based on device count
       let color = 'transparent';
 
       if (feature.get('devicesOut')) {
@@ -54,6 +55,37 @@ export class PredictedOutageComponent implements OnInit {
       });
       return retStyle;
     };
+
+    this.styleMapDeviceOutPercent = function (feature) {
+      // handle the device out based on percentage
+      let color = 'transparent';
+
+      if (feature.get('devicesOutPercent')) {
+        if (inRange(feature.get('devicesOutPercent') * 100, 0, 20)) {
+          color = '#d0fc61';
+        }
+        if (inRange(feature.get('devicesOutPercent') * 100, 20, 40)) {
+          color = '#80ad1d';
+        }
+        if (inRange(feature.get('devicesOutPercent') * 100, 40, 60)) {
+          color = '#ffc603';
+        }
+        if (inRange(feature.get('devicesOutPercent') * 100, 60, 80)) {
+          color = '#fe8b3a';
+        }
+        if (inRange(feature.get('devicesOutPercent') * 100, 80, 100)) {
+          color = '#f44337';
+        }
+      }
+      const retStyle = new Style({
+        fill: new Fill({
+          color: color
+        })
+      });
+      return retStyle;
+    };
+    
+    this.mapStyleOutage = this.styleMapDeviceOut;
     this.prepareMapData();
   }
 
@@ -74,11 +106,8 @@ export class PredictedOutageComponent implements OnInit {
   }
 
   settoggleOutage(val: boolean) {
+    this.prepareMapData();
     this.toggleOutage = val;
-    if (val) {
-      this.prepareMapData();
-    } else {
-      this.mapDataOutage = null;
-    }
+    this.mapStyleOutage = this.toggleOutage ? this.styleMapDeviceOut : this.styleMapDeviceOutPercent;;
   }
 }

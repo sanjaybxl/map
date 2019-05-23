@@ -61,11 +61,11 @@ export class MapDisplayComponent implements OnInit, OnChanges {
         this.vectorLayer.getSource().addFeatures(this.format.readFeatures(this.mapData));
         this.map.getView().fit(this.vectorLayer.getSource().getExtent(), { size: this.map.getSize() });
       }
-      if(this.mapData === null) {
-       this.vectorLayer.getSource().clear();
-  
+    }
+    if (changes['mapStyle']) {
+      if (this.mapStyle && this.vectorLayer) {
+        this.vectorLayer.setStyle(this.mapStyle);
       }
-      
     }
   }
 }
