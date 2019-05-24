@@ -15,12 +15,8 @@
         </div>
       </div>
       <div class="map-actions">
-        <a (click)="settoggleOutage(false)">
-          <img src="../../assets/img/noun_map_marker.svg" />
-        </a>
-        <a (click)="settoggleOutage(true)">
-          <img src="../../assets/img/noun_power_outage.svg" />
-        </a>
+        <div (click)="settoggleOutage(false)" class="map-marker"></div>
+        <div (click)="settoggleOutage(true)" class="noun-power-outage"></div>
       </div>
     </div>
 

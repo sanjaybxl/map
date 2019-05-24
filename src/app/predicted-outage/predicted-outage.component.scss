@@ -18,6 +18,9 @@
           height: 10px;
           margin: 2px 2px;
         }
+        .range-number {
+          color: white;
+        }
       }
     }
     
@@ -42,3 +45,23 @@
       margin-left: 5px;
     }
   }
+
+.map-marker {
+  height: 25px;
+  background-image: url(../../assets/img/noun_map_marker.svg);
+  width: 25px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #1d2b33;
+  margin-left:10px;
+}
+
+.noun-power-outage {
+  height: 25px;
+  background-image: url(../../assets/img/noun_power_outage.svg);
+  width: 25px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #42515e;
+  margin-left:10px;
+}
