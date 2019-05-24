@@ -15,8 +15,8 @@
         </div>
       </div>
       <div class="map-actions">
-        <div (click)="settoggleOutage(false)" class="map-marker"></div>
-        <div (click)="settoggleOutage(true)" class="noun-power-outage"></div>
+        <div (click)="settoggleOutage(false)" class="map-marker" [style.background-color]="!mapStyleOutage ? '#42515e' : '#1d2b33'"></div>
+        <div (click)="settoggleOutage(true)" class="noun-power-outage" [style.background-color]="mapStyleOutage ? '#42515e' : '#1d2b33'"></div>
       </div>
     </div>
 
