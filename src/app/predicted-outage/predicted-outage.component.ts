@@ -13,7 +13,6 @@ import { predicteOutageRange } from './predicted-outage.constants';
 export class PredictedOutageComponent implements OnInit {
   mapStyleOutage: any;
   mapDataOutage: any;
-  inRange: any;
   poRange = predicteOutageRange;
   isNaN: Function = Number.isNaN;
   toggleOutage: boolean = true;
@@ -24,7 +23,7 @@ export class PredictedOutageComponent implements OnInit {
 
   ngOnInit() {
     let inRange = (x, min, max) => {
-      return ((x - min) * (x - max) <= 0);
+      return isNaN(max) ? (x >= min) : ((x - min) * (x - max) <= 0);
     }
 
     this.styleMapDeviceOut = function (feature) {
@@ -32,21 +31,12 @@ export class PredictedOutageComponent implements OnInit {
       let color = 'transparent';
 
       if (feature.get('devicesOut')) {
-        if (inRange(feature.get('devicesOut'), 0, 5)) {
-          color = '#d0fc61';
-        }
-        if (inRange(feature.get('devicesOut'), 5, 20)) {
-          color = '#80ad1d';
-        }
-        if (inRange(feature.get('devicesOut'), 20, 30)) {
-          color = '#ffc603';
-        }
-        if (inRange(feature.get('devicesOut'), 30, 40)) {
-          color = '#fe8b3a';
-        }
-        if (feature.get('devicesOut') > 40) {
-          color = '#f44337';
-        }
+        predicteOutageRange.map(r => {
+          const deviceData = this.toggleOutage ? feature.get('devicesOut') : feature.get('devicesOutPercent') * 100;
+          if(inRange(deviceData, r.min, r.max)) {
+            color = r.color
+          }
+        });
       }
       const retStyle = new Style({
         fill: new Fill({
@@ -54,37 +44,8 @@ export class PredictedOutageComponent implements OnInit {
         })
       });
       return retStyle;
-    };
+    }.bind(this);
 
-    this.styleMapDeviceOutPercent = function (feature) {
-      // handle the device out based on percentage
-      let color = 'transparent';
-
-      if (feature.get('devicesOutPercent')) {
-        if (inRange(feature.get('devicesOutPercent') * 100, 0, 20)) {
-          color = '#d0fc61';
-        }
-        if (inRange(feature.get('devicesOutPercent') * 100, 20, 40)) {
-          color = '#80ad1d';
-        }
-        if (inRange(feature.get('devicesOutPercent') * 100, 40, 60)) {
-          color = '#ffc603';
-        }
-        if (inRange(feature.get('devicesOutPercent') * 100, 60, 80)) {
-          color = '#fe8b3a';
-        }
-        if (inRange(feature.get('devicesOutPercent') * 100, 80, 100)) {
-          color = '#f44337';
-        }
-      }
-      const retStyle = new Style({
-        fill: new Fill({
-          color: color
-        })
-      });
-      return retStyle;
-    };
-    
     this.mapStyleOutage = this.styleMapDeviceOut;
     this.prepareMapData();
   }
