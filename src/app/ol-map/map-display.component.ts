@@ -2,7 +2,7 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/cor
 import OlMap from 'ol/Map';
 import OlView from 'ol/View';
 import VectorSource from 'ol/source/Vector';
-import GeoJSON from 'ol/format/GeoJSON';
+import GeoJSON, { Options } from 'ol/format/GeoJSON';
 import { Tile as TileLayer, Vector as VectorLayer, Group as LayerGroup } from 'ol/layer';
 import XYZ from 'ol/source/XYZ';
 
@@ -17,10 +17,12 @@ export class MapDisplayComponent implements OnInit, OnChanges {
   @Input() mapStyle: any;
   @Input() renderTo: any;
   vectorLayer: VectorLayer;
-  format = new GeoJSON({
+  
+  options: Options = {
     featureProjection: 'EPSG:3857',
-    defaultDataProjection: 'EPSG:3857'
-  });
+  }
+
+  format = new GeoJSON(this.options);
   layerGroup: any;
 
   constructor() { }
