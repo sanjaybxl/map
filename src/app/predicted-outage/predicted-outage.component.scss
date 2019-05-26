@@ -1,9 +1,13 @@
 .analytic-title {
     display: flex;
     line-height: auto;
+    width: 100%;
     padding-bottom: 10px;
+    justify-content:space-between;
     .title {
       width: auto;
+      color: white;
+      align-self: center;
     }
     .outage-range {
       display: flex;
@@ -45,23 +49,21 @@
       margin-left: 5px;
     }
   }
+  .icon-button {
+    background-color: #1d2b33;
+    margin-left:10px;
 
-.map-marker {
-  height: 25px;
-  background-image: url(../../assets/img/noun_map_marker.svg);
-  width: 25px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: #1d2b33;
-  margin-left:10px;
-}
+    .map-marker {
+      height: 25px;
+      mask: url('../../assets/img/noun_map_marker.svg') no-repeat 50% 50%;
+      width: 25px;
+      background-position: center;
+    }
 
-.noun-power-outage {
-  height: 25px;
-  background-image: url(../../assets/img/noun_power_outage.svg);
-  width: 25px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: #42515e;
-  margin-left:10px;
-}
+    .noun-power-outage {
+      height: 25px;
+      mask: url('../../assets/img/noun_power_outage.svg') no-repeat 50% 50%;
+      width: 25px;
+      background-position: center;
+    }
+  }

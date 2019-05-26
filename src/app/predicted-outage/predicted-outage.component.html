@@ -15,8 +15,12 @@
         </div>
       </div>
       <div class="map-actions">
-        <div (click)="settoggleOutage(false)" class="map-marker"></div>
-        <div (click)="settoggleOutage(true)" class="noun-power-outage"></div>
+        <div (click)="settoggleOutage(false)" class="icon-button" [style.background-color]="!mapStyleOutage ? '#42515e' : '#1d2b33'">
+          <div class="map-marker" [style.background-color]="!mapStyleOutage ? 'white' : '#42515e'"></div>
+        </div>
+        <div (click)="settoggleOutage(true)" class="icon-button" [style.background-color]="mapStyleOutage ? '#42515e' : '#1d2b33'">
+          <div class="noun-power-outage" [style.background-color]="mapStyleOutage ? 'white' : '#42515e'"></div>
+        </div>
       </div>
     </div>
 

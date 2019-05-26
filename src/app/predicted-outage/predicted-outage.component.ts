@@ -22,7 +22,7 @@ export class PredictedOutageComponent implements OnInit {
   constructor(private preditedOutageService: PreditedOutageService) { }
 
   ngOnInit() {
-    let inRange = (x, min, max) => {
+    const inRange = (x, min, max) => {
       return isNaN(max) ? (x >= min) : ((x - min) * (x - max) <= 0);
     }
 
