@@ -52,13 +52,13 @@
   .icon-button {
     background-color: #1d2b33;
     margin-left:10px;
-
+    
     .map-marker {
       height: 25px;
       mask: url('../../assets/img/noun_map_marker.svg') no-repeat 50% 50%;
       width: 25px;
       background-position: center;
-    }
+  }
 
     .noun-power-outage {
       height: 25px;
@@ -66,4 +66,13 @@
       width: 25px;
       background-position: center;
     }
+  }
+  .active {
+    background-color: white;
+  }
+  .not-active {
+    background-color: #42515e;
+  }
+  .btn-active {
+    background-color: #42515e
   }

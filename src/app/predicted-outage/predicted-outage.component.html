@@ -15,11 +15,11 @@
         </div>
       </div>
       <div class="map-actions">
-        <div (click)="settoggleOutage(false)" class="icon-button" [style.background-color]="!mapStyleOutage ? '#42515e' : '#1d2b33'">
-          <div class="map-marker" [style.background-color]="!mapStyleOutage ? 'white' : '#42515e'"></div>
+        <div (click)="settoggleOutage(false)" class="icon-button" [ngClass]="!mapStyleOutage ? 'btn-active' : ''">
+          <div class="map-marker" [ngClass]="!mapStyleOutage ? 'active' : 'not-active'"></div>
         </div>
-        <div (click)="settoggleOutage(true)" class="icon-button" [style.background-color]="mapStyleOutage ? '#42515e' : '#1d2b33'">
-          <div class="noun-power-outage" [style.background-color]="mapStyleOutage ? 'white' : '#42515e'"></div>
+        <div (click)="settoggleOutage(true)" class="icon-button" [ngClass]="mapStyleOutage ? 'btn-active' : ''">
+          <div class="noun-power-outage" [ngClass]="mapStyleOutage ? 'active' : 'not-active'"></div>
         </div>
       </div>
     </div>
