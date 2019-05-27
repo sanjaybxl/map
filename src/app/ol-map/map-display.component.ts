@@ -5,6 +5,8 @@ import VectorSource from 'ol/source/Vector';
 import GeoJSON, { Options } from 'ol/format/GeoJSON';
 import { Tile as TileLayer, Vector as VectorLayer, Group as LayerGroup } from 'ol/layer';
 import XYZ from 'ol/source/XYZ';
+import { StyleLike } from 'ol/style/Style';
+import { GeoJon } from '../../shared/model/geojson.model';
 
 @Component({
   selector: 'map-display',
@@ -13,9 +15,9 @@ import XYZ from 'ol/source/XYZ';
 })
 export class MapDisplayComponent implements OnInit, OnChanges {
   map: OlMap;
-  @Input() mapData: any;
-  @Input() mapStyle: any;
-  @Input() renderTo: any;
+  @Input() mapData: GeoJon;
+  @Input() mapStyle: StyleLike;
+  @Input() renderTo: string;
   vectorLayer: VectorLayer;
   
   options: Options = {
