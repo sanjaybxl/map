@@ -1,0 +1,14 @@
+<div class="gcr-dropdown">
+  <div class="dropdown" #button (click)="open($event)">
+    <ng-template [ngTemplateOutlet]="selectedItemTemplate" [ngTemplateOutletContext]="{ $implicit: selected}">
+    </ng-template>
+    <gcr-icon class="icon" size="10" icon="circle" readonly="true"></gcr-icon>
+  </div>
+  <div #menu class="dropdown-menu" [ngClass]="{'hidden': !visible}">
+    <div class="dropdownmenu-overlay"></div>
+    <div class="item blur" *ngFor="let item of items" (click)="dropdownItemSelected($event, item)">
+      <ng-template [ngTemplateOutlet]="itemTemplate" [ngTemplateOutletContext]="{ $implicit: item }">
+      </ng-template>
+    </div>
+  </div>
+</div>

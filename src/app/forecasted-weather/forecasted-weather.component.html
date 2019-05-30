@@ -4,7 +4,47 @@
       Forecasted Weather
     </div>
     <div class="outage-range">
-
+      <div class="map-actions">
+        <gcr-dropdown [selected]="selectedItem" title="" [items]="dropDownItems" size="180">
+          <ng-template #selectedItemTemplate let-item>
+            <div style="display: initial">
+              <div>
+                <div style="display: inline-block">
+                  <span class="area">{{ item.text }}</span>
+                </div>
+              </div>
+              <div class="e-container e-color-palette">
+                <div class="e-palette" tabindex="0">
+                  <div class="e-row" role="row">
+                    <span class="e-tile" *ngFor="let color of item.colors" role="gridcell" aria-label="#000000ff" aria-selected="false" [style.background-color]='color'></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+          <ng-template #item let-item style="display: grid">
+            <div style="display: initial">
+              <div>
+                <div style="display: inline-block">
+                  <span>
+                    <gcr-icon icon="circle" readonly="true"></gcr-icon>
+                  </span>
+                </div>
+                <div style="display: inline-block">
+                  <span class="area">{{ item.text }}</span>
+                </div>
+              </div>
+              <div class="e-container e-color-palette margin-left">
+                <div class="e-palette" tabindex="0">
+                  <div class="e-row" role="row">
+                    <span class="e-tile" *ngFor="let color of item.colors" role="gridcell" aria-label="#000000ff" aria-selected="false" [style.background-color]='color'></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </gcr-dropdown>
+      </div>
     </div>
   </div>
   <div class="analytic-map">

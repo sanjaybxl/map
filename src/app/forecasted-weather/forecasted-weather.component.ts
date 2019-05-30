@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DropdownItem } from '../dropdown/dropdown.model';
 
 @Component({
   selector: 'app-forecasted-weather',
@@ -8,6 +9,14 @@ import { Component, OnInit } from '@angular/core';
 export class ForecastedWeatherComponent implements OnInit {
 
   constructor() { }
+  dropDownItems: DropdownItem[] = [
+    { text: 'Alarms', colors: ['rgb(120, 0, 12)', 'rgb(244, 67, 54)', 'rgb(233, 30, 99)'] },
+    { text: 'Network', colors: ['red', 'green'] },
+    { text: 'Orders', colors: ['red', 'green'] },
+    { text: 'Storm Assist', colors: ['red', 'green'] }
+  ];
+  selectedItem: DropdownItem =
+    { text: 'Alarms', colors: ['rgb(120, 0, 12)', 'rgb(244, 67, 54)', 'rgb(233, 30, 99)'] }
 
   ngOnInit() {
   }

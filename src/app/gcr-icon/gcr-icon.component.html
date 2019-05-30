@@ -1,0 +1,4 @@
+<div class="icon-container" #appIcon [ngClass]="{'isActive': readonly, 'selected': isSelected}" (click)="toggleIcon($event)">
+  <px-icon  class="custom-app-icon" [icon]="icon" *ngIf="isPredixIcon"> </px-icon>
+  <img *ngIf="!isPredixIcon" src="assets/icons/{{ icon }}.svg" alt="" class="custom-app-icon">
+</div>
