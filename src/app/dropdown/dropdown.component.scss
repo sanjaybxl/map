@@ -2,90 +2,89 @@ $vertical-padding: 0.5em;
 $horizontal-margin: 1em;
 
 :host {
-    display: flex;
-    box-sizing: border-box;
+  display: flex;
+  box-sizing: border-box;
 
-    &:hover {
-        cursor: default;
-    }
+  &:hover {
+    cursor: default;
+  }
 }
 
 .gcr-dropdown {
+  display: flex;
+  flex-direction: column;
+
+  .dropdown {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    background-color: rgb(21, 30, 39);
+    color: lightseagreen;
+    border: none;
+    font-size: 1.25em;
+    text-align: left;
+    border: 1px solid rgb(87, 102, 113);
 
-
-    .dropdown {
-        display: flex;
-        align-items: center;
-        background-color: rgb(21, 30, 39);
-        color: lightseagreen;
-        border: none;
-        font-size: 1.25em;
-        text-align: left;
-        border: 1px solid rgb(87, 102, 113);
-
-        div {
-            padding: 5px 0;
-            margin-left: 0.35em;
-        }
-
-        .icon {
-            margin-left: auto;
-            margin-right: 0.35em;
-        }
-
-        .title {
-            font-size: inherit;
-        }
+    div {
+      padding: 5px 0;
+      margin-left: 0.35em;
     }
 
-    .dropdown-menu {
-        position: absolute;
-        will-change: transform;
-        z-index: 9999;
-        overflow: hidden;
-        display: block;
-        margin: 0px !important;
-        background-color: rgb(87, 102, 113) !important;
-        border-color: rgb(87, 102, 113) !important;
-        border-radius: 0px !important;
-        &.hidden {
-            opacity: 0;
-            z-index: -1;
-        }
-
-        .item {
-            opacity: 0.98;
-            display: flex;
-            align-items: center;
-            width: 100%;
-            padding: 5px 0;
-            clear: both;
-            white-space: nowrap;
-            color: white;
-            font-size: 1.25em;
-
-            ::ng-deep a {
-                text-decoration: none;
-                color: white;
-            }
-
-            &:hover {
-                background-color: #263b46;
-                cursor: pointer;
-            }
-        }
-
-        .dropdownmenu-overlay {
-            position: absolute;
-            top: 0px;
-            z-index: 0;
-            height: 100%;
-            width: 100%;
-            opacity: 0.95;
-            background-color: rgb(1, 0, 1);
-            border: 1px solid rgba(#000, .2);
-        }
+    .icon {
+      margin-left: auto;
+      margin-right: 0.35em;
     }
+
+    .title {
+      font-size: inherit;
+    }
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    will-change: transform;
+    z-index: 9999;
+    overflow: hidden;
+    display: block;
+    margin: 0px !important;
+    background-color: rgb(87, 102, 113) !important;
+    border-color: rgb(87, 102, 113) !important;
+    border-radius: 0px !important;
+    &.hidden {
+      opacity: 0;
+      z-index: -1;
+    }
+
+    .item {
+      opacity: 0.98;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      padding: 5px 0;
+      clear: both;
+      white-space: nowrap;
+      color: white;
+      font-size: 1.25em;
+
+      ::ng-deep a {
+        text-decoration: none;
+        color: white;
+      }
+
+      &:hover {
+        background-color: #263b46;
+        cursor: pointer;
+      }
+    }
+
+    .dropdownmenu-overlay {
+      position: absolute;
+      top: 0px;
+      z-index: 0;
+      height: 100%;
+      width: 100%;
+      opacity: 0.95;
+      background-color: rgb(1, 0, 1);
+      border: 1px solid rgba(#000, 0.2);
+    }
+  }
 }

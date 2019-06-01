@@ -5,18 +5,31 @@
     </div>
     <div class="outage-range">
       <div class="map-actions">
-        <gcr-dropdown [selected]="selectedItem" title="" [items]="dropDownItems" size="180" (itemSelected)="onSelected($event)">
+        <gcr-dropdown
+          [selected]="selectedItem"
+          title=""
+          [items]="dropDownItems"
+          size="180"
+          (itemSelected)="onSelected($event)"
+        >
           <ng-template #selectedItemTemplate let-item>
-            <div style="display: initial" class="margin-left">
+            <div class="item-row margin-left">
               <div>
-                <div style="display: inline-block">
-                  <span class="area">{{ item.text }}</span>
-                </div>
+                <span class="area">{{ item.text }}</span>
               </div>
-              <div class="e-container e-color-palette">
-                <div class="e-palette" tabindex="0">
-                  <div class="e-row" role="row">
-                    <span class="e-tile" *ngFor="let color of item.colors" role="gridcell" aria-label="#000000ff" aria-selected="false" [style.background-color]='color'></span>
+              <div>
+                <div class="e-container e-color-palette">
+                  <div class="e-palette" tabindex="0">
+                    <div class="e-row" role="row">
+                      <span
+                        class="e-tile"
+                        *ngFor="let color of item.colors"
+                        role="gridcell"
+                        aria-label="#000000ff"
+                        aria-selected="false"
+                        [style.background-color]="color"
+                      ></span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -24,44 +37,35 @@
           </ng-template>
           <ng-template #item let-item>
             <div class="item-row">
-              <div>
-                <div style="display: inline-block; min-width: 15px;">
-                  <gcr-icon icon="circle" *ngIf="item.text === selectedItem.text"></gcr-icon>
+              <div class="item-row">
+                <div style="min-width: 15px;">
+                  <gcr-icon
+                    icon="circle"
+                    *ngIf="item.text === selectedItem.text"
+                  ></gcr-icon>
                 </div>
-                <div style="display: inline-block">
-                  <span class="area">{{ item.text }}</span>
-                </div>
+              </div>
+              <div style="display: inline-block">
+                <span class="area">{{ item.text }}</span>
               </div>
               <div class="content">
                 <div class="e-container e-color-palette">
                   <div class="e-palette" tabindex="0">
                     <div class="e-row" role="row">
-                      <span class="e-tile" *ngFor="let color of item.colors" role="gridcell" aria-label="#000000ff" aria-selected="false" [style.background-color]='color' [style.border-color]='color' ></span>
+                      <span
+                        class="e-tile"
+                        *ngFor="let color of item.colors"
+                        role="gridcell"
+                        aria-label="#000000ff"
+                        aria-selected="false"
+                        [style.background-color]="color"
+                        [style.border-color]="color"
+                      ></span>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <!-- 
-            <div style="display: initial">
-              <div>
-                <div style="display: inline-block">
-                  <span *ngIf="item.text === selectedItem.text">
-                    <gcr-icon icon="circle" readonly="true"></gcr-icon>
-                  </span>
-                </div>
-                <div style="display: inline-block">
-                  <span class="area">{{ item.text }}</span>
-                </div>
-              </div>
-              <div class="e-container e-color-palette margin-left">
-                <div class="e-palette" tabindex="0">
-                  <div class="e-row" role="row">
-                    <span class="e-tile" *ngFor="let color of item.colors" role="gridcell" aria-label="#000000ff" aria-selected="false" [style.background-color]='color'></span>
-                  </div>
-                </div>
-              </div>
-            </div> -->
           </ng-template>
         </gcr-dropdown>
       </div>
