@@ -44,3 +44,26 @@
       margin-left: 5px;
     }
   }
+
+
+    .item-row {
+      display: inline-block;
+      clear: both;
+      .icon {
+        min-width: 15px;
+      }
+      .content {
+        margin-left: 15px; 
+      }
+  }
+  
+
+  .container{
+    display: flex;
+}
+.fixed{
+    width: 200px;
+}
+.flex-item{
+    flex-grow: 1;
+}

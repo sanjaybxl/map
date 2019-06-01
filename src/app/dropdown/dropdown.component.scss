@@ -18,16 +18,14 @@ $horizontal-margin: 1em;
     .dropdown {
         display: flex;
         align-items: center;
-        background-color: gray;
+        background-color: rgb(21, 30, 39);
         color: lightseagreen;
         border: none;
         font-size: 1.25em;
         text-align: left;
-        border: 3px solid gray;
-        border-top: 0;
-        border-bottom: 0;
+        border: 1px solid rgb(87, 102, 113);
 
-        span {
+        div {
             padding: 5px 0;
             margin-left: 0.35em;
         }
@@ -47,8 +45,11 @@ $horizontal-margin: 1em;
         will-change: transform;
         z-index: 9999;
         overflow: hidden;
-        border: 3px solid gray;
         display: block;
+        margin: 0px !important;
+        background-color: rgb(87, 102, 113) !important;
+        border-color: rgb(87, 102, 113) !important;
+        border-radius: 0px !important;
         &.hidden {
             opacity: 0;
             z-index: -1;
@@ -59,7 +60,7 @@ $horizontal-margin: 1em;
             display: flex;
             align-items: center;
             width: 100%;
-            padding: 10px 0;
+            padding: 5px 0;
             clear: both;
             white-space: nowrap;
             color: white;
@@ -71,21 +72,20 @@ $horizontal-margin: 1em;
             }
 
             &:hover {
-                background-color: green;
+                background-color: #263b46;
                 cursor: pointer;
             }
         }
 
         .dropdownmenu-overlay {
             position: absolute;
-            left: -3px;
-            top: -3px;
+            top: 0px;
             z-index: 0;
             height: 100%;
             width: 100%;
             opacity: 0.95;
             background-color: rgb(1, 0, 1);
-            border: 3px solid rgba(#000, .2);
+            border: 1px solid rgba(#000, .2);
         }
     }
 }
